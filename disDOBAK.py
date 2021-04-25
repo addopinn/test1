@@ -20,7 +20,7 @@ sql = ""
 
 client = discord.Client()
 Uptime.uptimeset()
-token = "ODIwMjEwODQxOTAzMzAwNjE4.YEx23w.poCBECdBy70mWX7VAt2AQRLxWJE"
+token = "your token"
 ######################################################################### former sys
 
 @client.event

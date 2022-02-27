@@ -8,6 +8,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from Dtime import Uptime
 import pymysql
+import sys
 conn = None
 cur = None
 data1 = ""

@@ -72,13 +72,10 @@ async def on_message(message):
         conn = pymysql.connect(host='127.0.0.1', user='root', password='kkkk123', db='Pingu', charset='utf8') 
         cur = conn.cursor() 
         print("DB접속 성공!")
-        cur.execute("SELECT discordID FROM userTable")
-        while (True) :
-            row = cur.fetchone()
-            if #row2에 있는 정보 == message.author.id:
-                await message.channel.send("|   ID   |    이름    |     보유 현금     | 보유 코인 |  직업  | 환전횟수 | 페널티 횟수 | 가입한 날짜 |")
-                await message.channel.send(("%15s %5s %15s %15s %15s %15s %5s %15s %15s %15s" % ("    ",row[0], row[1],row[3],row[4],row[5],row[6],drow[7],"         ",row[8])))
-                break
+        cur.execute("SELECT discordID FROM userTable WHERE DiscordID = %s",message.author.id)
+        row = cur.fetchone()
+        await message.channel.send("|   ID   |    이름    |     보유 현금     | 보유 코인 |  직업  | 환전횟수 | 페널티 횟수 | 가입한 날짜 |")
+        await message.channel.send(("%15s %5s %15s %15s %15s %15s %5s %15s %15s %15s" % ("    ",row[0], row[1],row[3],row[4],row[5],row[6],drow[7],"         ",row[8])))
         conn.close()
 
     if message.content.startswith("!매수"):
